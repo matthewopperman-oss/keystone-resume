@@ -11,6 +11,9 @@
   header { background: linear-gradient(135deg, #1a365d 0%, #2b6cb0 100%); color: white; padding: 3rem 1rem; text-align: center; }
   header h1 { margin: 0; font-size: 2.5rem; font-weight: 700; }
   header p { margin: 0.75rem 0 0; font-size: 1.15rem; opacity: 0.95; }
+  nav { background: #1a365d; padding: 0.5rem 1rem; text-align: center; }
+  nav a { color: white; margin: 0 1rem; text-decoration: none; font-weight: 500; }
+  nav a:hover { text-decoration: underline; }
   .container { max-width: 960px; margin: 0 auto; padding: 2.5rem 1.25rem; }
   section { margin-bottom: 3.5rem; }
   h2 { color: #1a365d; border-bottom: 3px solid #2b6cb0; padding-bottom: 0.5rem; font-size: 1.75rem; }
@@ -32,10 +35,10 @@
   .how { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 1.5rem; }
   .step { text-align: center; padding: 1rem; }
   .step-num { background: #2b6cb0; color: white; width: 40px; height: 40px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-weight: bold; margin-bottom: 0.5rem; }
+  .trust-box { background: #f0fff4; border: 1px solid #9ae6b4; border-radius: 8px; padding: 1.25rem; margin-top: 1rem; }
   footer { text-align: center; padding: 2.5rem 1rem; background: #edf2f7; color: #4a5568; font-size: 0.95rem; }
   footer a { color: #2b6cb0; }
   .test-banner { background: #fffbeb; color: #744210; padding: 0.75rem; text-align: center; font-size: 0.9rem; border-bottom: 1px solid #f6e05e; }
-  .trust { font-size: 0.9rem; color: #4a5568; margin-top: 1rem; }
 </style>
 </head>
 <body>
@@ -44,9 +47,15 @@
   <h1>Keystone Resume Writing</h1>
   <p>ATS-optimized resumes that get you interviews. Clear, achievement-focused, results-driven.</p>
 </header>
+<nav>
+  <a href="#packages">Packages</a>
+  <a href="#how">How It Works</a>
+  <a href="#trust">Why Keystone</a>
+  <a href="#contact">Contact</a>
+</nav>
 
 <div class="container">
-  <section class="services">
+  <section class="services" id="services">
     <h2>What We Do</h2>
     <p>We build professional resumes tailored to the roles you want. Every document is structured to pass Applicant Tracking Systems and highlight measurable impact for hiring managers.</p>
     <ul>
@@ -58,32 +67,34 @@
     </ul>
   </section>
 
-  <section>
+  <section id="packages">
     <h2>Packages</h2>
     <div class="packages">
       <div class="package">
         <h3>Starter</h3>
         <div class="price">$149</div>
-        <p>Professional resume rewrite with ATS formatting and 2 rounds of revisions.</p>
-        <!-- Replace href with your Stripe test mode Payment Link for Starter -->
-        <a class="buy-btn" href="#" onclick="alert('Stripe test Payment Link for Starter $149 goes here. In trial, use test card 4242 4242 4242 4242 — no real money moves.'); return false;">Buy Starter — $149</a>
+        <p>Professional resume rewrite with ATS formatting and <strong>2 rounds of revisions</strong>.</p>
+        <!-- TODO: Replace href with Stripe test Payment Link for Starter $149 -->
+        <a class="buy-btn" href="#">Buy Starter — $149</a>
       </div>
       <div class="package">
         <h3>Targeted</h3>
         <div class="price">$229</div>
-        <p>Full resume plus one job-specific targeted version and a matching cover letter.</p>
-        <a class="buy-btn" href="#" onclick="alert('Stripe test Payment Link for Targeted $229 goes here. Use test card 4242 4242 4242 4242.'); return false;">Buy Targeted — $229</a>
+        <p>Full resume + one job-specific targeted version + matching cover letter. Includes <strong>2 rounds of revisions</strong>.</p>
+        <!-- TODO: Replace href with Stripe test Payment Link for Targeted $229 -->
+        <a class="buy-btn" href="#">Buy Targeted — $229</a>
       </div>
       <div class="package">
         <h3>Complete</h3>
         <div class="price">$349</div>
-        <p>Resume, cover letter, LinkedIn optimization, and up to 3 revision rounds.</p>
-        <a class="buy-btn" href="#" onclick="alert('Stripe test Payment Link for Complete $349 goes here. Use test card 4242 4242 4242 4242.'); return false;">Buy Complete — $349</a>
+        <p>Everything in Targeted (resume + job-specific version + cover letter) plus LinkedIn optimization and <strong>up to 3 revision rounds</strong>.</p>
+        <!-- TODO: Replace href with Stripe test Payment Link for Complete $349 -->
+        <a class="buy-btn" href="#">Buy Complete — $349</a>
       </div>
     </div>
   </section>
 
-  <section>
+  <section id="how">
     <h2>How It Works</h2>
     <div class="how">
       <div class="step">
@@ -104,9 +115,22 @@
     </div>
   </section>
 
-  <section>
+  <section id="trust">
+    <h2>Why Keystone</h2>
+    <div class="trust-box">
+      <ul>
+        <li><strong>Turnaround:</strong> First draft in 3–5 business days after we receive your materials.</li>
+        <li><strong>Revisions:</strong> Included as listed on each package (2 or 3 rounds).</li>
+        <li><strong>Privacy:</strong> Your resume and personal details are used only to write your documents and are never shared or sold.</li>
+        <li><strong>Satisfaction:</strong> We work with you through the included revisions so the final product fits the roles you want.</li>
+        <li><strong>Writer:</strong> Experienced professional focused on clear, achievement-based, ATS-friendly resumes.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="contact">
     <h2>Questions or Custom Request</h2>
-    <form action="mailto:oppermanmr@gmail.com" method="post" enctype="text/plain">
+    <form action="mailto:oppermanmr@gmail.com?subject=Keystone%20Resume%20Inquiry" method="post" enctype="text/plain">
       <label for="name">Name</label>
       <input id="name" type="text" name="name" required>
       <label for="email">Email</label>
@@ -122,7 +146,7 @@
       <textarea id="message" name="message" rows="5" placeholder="Target job titles, current resume status, timeline..." required></textarea>
       <button type="submit">Send Inquiry</button>
     </form>
-    <p class="trust">For the trial, use the Buy buttons above with Stripe test mode. No real money is exchanged. Inquiries still route to the test email.</p>
+    <p style="font-size:0.9rem; color:#4a5568; margin-top:1rem;">For the trial, use the Buy buttons above with Stripe test mode (card 4242 4242 4242 4242). No real money is exchanged. After payment you’ll land on the thank-you page with next steps.</p>
   </section>
 </div>
 
