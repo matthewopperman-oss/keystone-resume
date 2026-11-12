@@ -17,11 +17,13 @@
   .services ul { padding-left: 1.25rem; }
   .services li { margin-bottom: 0.5rem; }
   .packages { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; margin-top: 1.5rem; }
-  .package { border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.75rem; background: #f8fafc; transition: transform 0.2s, box-shadow 0.2s; }
+  .package { border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.75rem; background: #f8fafc; transition: transform 0.2s, box-shadow 0.2s; text-align: center; }
   .package:hover { transform: translateY(-4px); box-shadow: 0 10px 25px rgba(0,0,0,0.08); }
   .package h3 { margin: 0 0 0.5rem; color: #2b6cb0; font-size: 1.4rem; }
   .price { font-size: 2rem; font-weight: 700; color: #1a365d; margin: 0.5rem 0; }
-  .package p { margin: 0.75rem 0 0; color: #4a5568; }
+  .package p { margin: 0.75rem 0 1rem; color: #4a5568; }
+  .buy-btn { display: inline-block; background: #2b6cb0; color: white; padding: 0.75rem 1.5rem; border: none; border-radius: 6px; cursor: pointer; font-size: 1rem; font-weight: 600; text-decoration: none; margin-top: 0.5rem; }
+  .buy-btn:hover { background: #2c5282; }
   form { background: #f7fafc; padding: 2rem; border-radius: 12px; border: 1px solid #e2e8f0; }
   label { display: block; margin-top: 1rem; font-weight: 600; color: #2d3748; }
   input, textarea, select { width: 100%; padding: 0.85rem; margin-top: 0.35rem; border: 1px solid #cbd5e0; border-radius: 6px; font-size: 1rem; }
@@ -33,10 +35,11 @@
   footer { text-align: center; padding: 2.5rem 1rem; background: #edf2f7; color: #4a5568; font-size: 0.95rem; }
   footer a { color: #2b6cb0; }
   .test-banner { background: #fffbeb; color: #744210; padding: 0.75rem; text-align: center; font-size: 0.9rem; border-bottom: 1px solid #f6e05e; }
+  .trust { font-size: 0.9rem; color: #4a5568; margin-top: 1rem; }
 </style>
 </head>
 <body>
-<div class="test-banner">Trial site for internal testing — inquiries route to test email</div>
+<div class="test-banner">Trial site — payments in Stripe test mode (no real money). Use test card 4242 4242 4242 4242</div>
 <header>
   <h1>Keystone Resume Writing</h1>
   <p>ATS-optimized resumes that get you interviews. Clear, achievement-focused, results-driven.</p>
@@ -62,16 +65,20 @@
         <h3>Starter</h3>
         <div class="price">$149</div>
         <p>Professional resume rewrite with ATS formatting and 2 rounds of revisions.</p>
+        <!-- Replace href with your Stripe test mode Payment Link for Starter -->
+        <a class="buy-btn" href="#" onclick="alert('Stripe test Payment Link for Starter $149 goes here. In trial, use test card 4242 4242 4242 4242 — no real money moves.'); return false;">Buy Starter — $149</a>
       </div>
       <div class="package">
         <h3>Targeted</h3>
         <div class="price">$229</div>
         <p>Full resume plus one job-specific targeted version and a matching cover letter.</p>
+        <a class="buy-btn" href="#" onclick="alert('Stripe test Payment Link for Targeted $229 goes here. Use test card 4242 4242 4242 4242.'); return false;">Buy Targeted — $229</a>
       </div>
       <div class="package">
         <h3>Complete</h3>
         <div class="price">$349</div>
         <p>Resume, cover letter, LinkedIn optimization, and up to 3 revision rounds.</p>
+        <a class="buy-btn" href="#" onclick="alert('Stripe test Payment Link for Complete $349 goes here. Use test card 4242 4242 4242 4242.'); return false;">Buy Complete — $349</a>
       </div>
     </div>
   </section>
@@ -98,24 +105,24 @@
   </section>
 
   <section>
-    <h2>Request a Quote or Consultation</h2>
+    <h2>Questions or Custom Request</h2>
     <form action="mailto:oppermanmr@gmail.com" method="post" enctype="text/plain">
-      <label>Name</label>
-      <input type="text" name="name" required>
-      <label>Email</label>
-      <input type="email" name="email" required>
-      <label>Package interest</label>
-      <select name="service">
+      <label for="name">Name</label>
+      <input id="name" type="text" name="name" required>
+      <label for="email">Email</label>
+      <input id="email" type="email" name="email" required>
+      <label for="service">Package interest</label>
+      <select id="service" name="service">
         <option>Starter</option>
         <option>Targeted</option>
         <option>Complete</option>
         <option>Not sure / custom</option>
       </select>
-      <label>Tell us about your goals</label>
-      <textarea name="message" rows="5" placeholder="Target job titles, current resume status, timeline..." required></textarea>
+      <label for="message">Tell us about your goals</label>
+      <textarea id="message" name="message" rows="5" placeholder="Target job titles, current resume status, timeline..." required></textarea>
       <button type="submit">Send Inquiry</button>
     </form>
-    <p style="font-size:0.9rem; color:#718096; margin-top:1rem;">Inquiries open in your email client and go to the test address for now. No payments on this site yet.</p>
+    <p class="trust">For the trial, use the Buy buttons above with Stripe test mode. No real money is exchanged. Inquiries still route to the test email.</p>
   </section>
 </div>
 
@@ -123,6 +130,7 @@
   <p><strong>Keystone Resume Writing</strong></p>
   <p>Professional resume services | Stockton, CA area</p>
   <p>Questions? Email <a href="mailto:oppermanmr@gmail.com">oppermanmr@gmail.com</a> (test)</p>
+  <p style="font-size:0.85rem; margin-top:1rem;">Trial only. Payments use Stripe test mode — no real charges.</p>
 </footer>
 </body>
 </html>
