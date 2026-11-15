@@ -9,6 +9,7 @@
   * { box-sizing: border-box; }
   body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin: 0; padding: 0; color: #1a202c; line-height: 1.6; background: #fff; }
   header { background: linear-gradient(135deg, #1a365d 0%, #2b6cb0 100%); color: white; padding: 3rem 1rem; text-align: center; }
+  .ks-tile { width: 112px; margin: 0 auto 1.25rem; padding: 14px 16px; background: #F4F1EA; border-radius: 18px; box-shadow: 0 8px 24px rgba(0,0,0,.25); }
   header h1 { margin: 0; font-size: 2.5rem; font-weight: 700; }
   header p { margin: 0.75rem 0 0; font-size: 1.15rem; opacity: 0.95; }
   nav { background: #1a365d; padding: 0.5rem 1rem; text-align: center; }
@@ -44,6 +45,62 @@
 <body>
 <div class="test-banner">Trial site — payments in Stripe test mode (no real money). Use test card 4242 4242 4242 4242</div>
 <header>
+  <div class="ks-tile ks-wrap">
+<svg class="ks-mark" xmlns="http://www.w3.org/2000/svg" viewBox="74 152 300 368" role="img" aria-label="Keystone Resume Writing">
+  <style>
+    .ks-mark { overflow: visible; display: block; transition: transform 1.2s cubic-bezier(.2,.7,.2,1); transform-origin: 50% 60%; }
+    .ks-wrap { perspective: 900px; }
+    .ks-wrap:hover .ks-mark { transform: rotateY(-28deg) rotateX(4deg); }
+    .ks-glow  { opacity: 0; animation: ks-glow 4.6s ease-in-out both; }
+    .ks-rim   { opacity: 0; animation: ks-in .5s ease-out 2.6s both; }
+    .ks-rays  { opacity: 0; animation: ks-rays 3s ease-in-out 3.5s both; }
+    .ks-rays path { transform-box: view-box; transform-origin: 224px 172px; animation: ks-fan 3s ease-out 3.5s both; }
+    .ks-spark circle { opacity: 0; animation: ks-twinkle 1.6s ease-in-out infinite; }
+    .ks-spark circle:nth-child(1){animation-delay:3.0s} .ks-spark circle:nth-child(2){animation-delay:3.3s}
+    .ks-spark circle:nth-child(3){animation-delay:3.6s} .ks-spark circle:nth-child(4){animation-delay:3.15s}
+    .ks-spark circle:nth-child(5){animation-delay:3.85s} .ks-spark circle:nth-child(6){animation-delay:3.45s}
+    .ks-spark circle:nth-child(7){animation-delay:4.1s} .ks-spark circle:nth-child(8){animation-delay:3.7s}
+    @keyframes ks-in { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes ks-glow { 0%,54% { opacity: 0; } 67% { opacity: 1; } 100% { opacity: .9; } }
+    @keyframes ks-rays { 0% { opacity: 0; } 45% { opacity: 1; } 100% { opacity: .55; } }
+    @keyframes ks-fan { from { transform: scaleX(.4); } to { transform: scaleX(1); } }
+    @keyframes ks-twinkle { 0%,100% { opacity: 0; transform: translateY(0); } 40% { opacity: 1; } 100% { transform: translateY(-14px); } }
+    @media (prefers-reduced-motion: reduce) {
+      .ks-glow, .ks-rim, .ks-rays, .ks-rays path, .ks-spark circle { animation: none; }
+      .ks-glow { opacity: .85; } .ks-rim { opacity: 1; } .ks-rays { opacity: .55; }
+      .ks-mark, .ks-wrap:hover .ks-mark { transition: none; transform: none; }
+    }
+  </style>
+  <defs>
+    <clipPath id="ks-gap"><path d="M213 172H235V228H252L266 500H182L196 228H213Z"/></clipPath>
+    <linearGradient id="ks-light" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F8EBCB"/>
+      <stop offset=".7" stop-color="#F0D8A4"/>
+      <stop offset="1" stop-color="#E2BC78"/>
+    </linearGradient>
+    <linearGradient id="ks-ray" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFFFFF" stop-opacity="1"/>
+      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect class="ks-glow" clip-path="url(#ks-gap)" x="180" y="172" width="88" height="328" fill="url(#ks-light)"/>
+  <g class="ks-rays" clip-path="url(#ks-gap)" fill="url(#ks-ray)">
+    <path d="M221 172H227L232 500H216Z"/>
+    <path d="M216 172H220L190 500H182Z"/>
+    <path d="M228 172H232L266 500H258Z"/>
+  </g>
+  <path fill="#9C814A" d="M182 500L184 470L224 452L264 470L266 500Z"/>
+  <g fill="#385366"><path d="M213 172L142 198L91 500H182L196 228H213Z"/><path d="M235 172L306 198L357 500H266L252 228H235Z"/></g>
+  <g class="ks-rim" fill="none" stroke="#FFFFFF" stroke-width="2.5" stroke-linejoin="round">
+    <path d="M213 173V228H196L182 499"/><path d="M235 173V228H252L266 499"/>
+  </g>
+  <g class="ks-spark" fill="#F3D58C">
+    <circle cx="224" cy="450" r="2.2"/><circle cx="216" cy="455" r="1.5"/><circle cx="232" cy="454" r="1.7"/>
+    <circle cx="220" cy="446" r="1.3"/><circle cx="229" cy="447" r="1.4"/><circle cx="210" cy="459" r="1.2"/>
+    <circle cx="238" cy="459" r="1.3"/><circle cx="224" cy="441" r="1.1"/>
+  </g>
+</svg>
+  </div>
   <h1>Keystone Resume Writing</h1>
   <p>ATS-optimized resumes that get you interviews. Clear, achievement-focused, results-driven.</p>
 </header>
