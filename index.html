@@ -9,7 +9,8 @@
   * { box-sizing: border-box; }
   body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin: 0; padding: 0; color: #1a202c; line-height: 1.6; background: #fff; }
   header { background: linear-gradient(135deg, #1a365d 0%, #2b6cb0 100%); color: white; padding: 3rem 1rem; text-align: center; }
-  .ks-tile { width: 112px; margin: 0 auto 1.25rem; padding: 14px 16px; background: #F4F1EA; border-radius: 18px; box-shadow: 0 8px 24px rgba(0,0,0,.25); }
+  .ks-tile { width: 220px; max-width: 55vw; margin: 0 auto 1.5rem; }
+  .ks-tile svg { filter: drop-shadow(0 10px 18px rgba(0,0,0,.35)); }
   header h1 { margin: 0; font-size: 2.5rem; font-weight: 700; }
   header p { margin: 0.75rem 0 0; font-size: 1.15rem; opacity: 0.95; }
   nav { background: #1a365d; padding: 0.5rem 1rem; text-align: center; }
@@ -48,7 +49,7 @@
   <div class="ks-tile ks-wrap">
 <svg class="ks-mark" xmlns="http://www.w3.org/2000/svg" viewBox="74 152 300 368" role="img" aria-label="Keystone Resume Writing">
   <style>
-    .ks-mark { overflow: visible; display: block; transform-origin: 50% 60%; transform: rotateY(-34deg) rotateX(3deg); }
+    .ks-mark { overflow: visible; display: block; }
     .ks-sweep { opacity: 0; transform: translateY(240px); animation: ks-sweep 1.8s ease-in-out .4s both; }
     .ks-rim  { opacity: 0; animation: ks-in .8s ease-out 1.8s both; }
     .ks-spark { transition: transform .8s ease-out; }
@@ -86,7 +87,6 @@
     </linearGradient>
   </defs>
   <g clip-path="url(#ks-cross)"><rect class="ks-sweep" x="170" y="260" width="110" height="140" fill="url(#ks-band)"/></g>
-  <use href="#ks-stone" fill="#55595C" transform="translate(7 2)"/>
   <g clip-path="url(#ks-clip)"><rect x="88" y="165" width="272" height="338" filter="url(#ks-granite)"/></g>
   <path class="ks-rim" fill="none" stroke="#9C814A" stroke-width="2.5" stroke-linejoin="miter" d="M213 172V252H176V274H213V440H235V274H272V252H235V172"/>
   <g class="ks-spark" fill="#E2C47E">
