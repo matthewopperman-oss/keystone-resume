@@ -50,51 +50,49 @@
   <style>
     .ks-mark { overflow: visible; display: block; transform-origin: 50% 60%; transform: rotateY(-34deg) rotateX(3deg); }
     .ks-sweep { opacity: 0; transform: translateY(240px); animation: ks-sweep 1.8s ease-in-out .4s both; }
-    .ks-glow { opacity: 0; animation: ks-glow 1.2s ease-out 1.6s both; }
-    .ks-rim  { opacity: 0; animation: ks-glow-rim .8s ease-out 1.8s both; }
+    .ks-rim  { opacity: 0; animation: ks-in .8s ease-out 1.8s both; }
     .ks-spark { transition: transform .8s ease-out; }
-    .ks-spark circle { opacity: 0; animation: ks-twinkle 1.6s ease-in-out infinite; }
-    .ks-spark circle:nth-child(1){animation-delay:2.0s} .ks-spark circle:nth-child(2){animation-delay:2.3s}
-    .ks-spark circle:nth-child(3){animation-delay:2.6s} .ks-spark circle:nth-child(4){animation-delay:2.15s}
-    .ks-spark circle:nth-child(5){animation-delay:2.85s} .ks-spark circle:nth-child(6){animation-delay:2.45s}
-    .ks-spark circle:nth-child(7){animation-delay:3.1s} .ks-spark circle:nth-child(8){animation-delay:2.7s}
-    .ks-wrap:hover .ks-spark { transform: translateY(-6px); }
-    .ks-wrap:hover .ks-spark circle { animation-duration: 1.1s; }
+    .ks-spark circle { opacity: 0; animation: ks-twinkle 1.6s ease-in-out infinite; animation-play-state: paused; }
+    .ks-spark circle:nth-child(1){animation-delay:0s} .ks-spark circle:nth-child(2){animation-delay:.3s}
+    .ks-spark circle:nth-child(3){animation-delay:.6s} .ks-spark circle:nth-child(4){animation-delay:.15s}
+    .ks-spark circle:nth-child(5){animation-delay:.85s} .ks-spark circle:nth-child(6){animation-delay:.45s}
+    .ks-spark circle:nth-child(7){animation-delay:1.1s} .ks-spark circle:nth-child(8){animation-delay:.7s}
+    .ks-wrap:hover .ks-spark { transform: translateY(-8px); }
+    .ks-wrap:hover .ks-spark circle { animation-play-state: running; }
     @keyframes ks-sweep { 0% { opacity: 0; transform: translateY(240px); } 15% { opacity: 1; } 85% { opacity: 1; } 100% { opacity: 0; transform: translateY(-300px); } }
-    @keyframes ks-glow { from { opacity: 0; } to { opacity: .4; } }
-    @keyframes ks-glow-rim { from { opacity: 0; } to { opacity: 1; } }
-    @keyframes ks-twinkle { 0%,100% { opacity: 0; transform: translateY(0); } 40% { opacity: 1; } 100% { transform: translateY(-14px); } }
+    @keyframes ks-in { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes ks-twinkle { 0%,100% { opacity: 0; transform: translateY(0); } 40% { opacity: 1; } 100% { transform: translateY(-16px); } }
     @media (prefers-reduced-motion: reduce) {
-      .ks-sweep, .ks-glow, .ks-rim, .ks-spark circle { animation: none; }
-      .ks-glow { opacity: .4; } .ks-rim { opacity: 1; } .ks-spark { transition: none; }
+      .ks-sweep, .ks-rim { animation: none; } .ks-rim { opacity: 1; } .ks-spark { transition: none; }
     }
   </style>
   <defs>
-    <clipPath id="ks-gap"><path d="M213 172H235V238H272V260H235V457L224 452L213 457V260H176V238H213Z"/></clipPath>
+    <path id="ks-stone" d="M213 172L142 198L91 500H357L306 198L235 172V252H272V274H235V440H213V274H176V252H213Z"/>
+    <clipPath id="ks-clip"><use href="#ks-stone"/></clipPath>
+    <clipPath id="ks-cross"><path d="M213 172H235V252H272V274H235V440H213V274H176V252H213Z"/></clipPath>
+    <filter id="ks-granite" x="0" y="0" width="1" height="1" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" seed="11" result="n"/>
+      <feColorMatrix in="n" type="matrix" values="0 0 0 0 .22  0 0 0 0 .23  0 0 0 0 .25  10 0 0 0 -6.2" result="dark"/>
+      <feColorMatrix in="n" type="matrix" values="0 0 0 0 .93  0 0 0 0 .93  0 0 0 0 .91  0 10 0 0 -6.4" result="light"/>
+      <feTurbulence type="fractalNoise" baseFrequency=".05" numOctaves="3" seed="4" result="m"/>
+      <feColorMatrix in="m" type="matrix" values="0 0 0 0 .35  0 0 0 0 .36  0 0 0 0 .38  0 0 1.4 0 -.55" result="mottle"/>
+      <feFlood flood-color="#8C8F91" result="base"/>
+      <feMerge><feMergeNode in="base"/><feMergeNode in="mottle"/><feMergeNode in="dark"/><feMergeNode in="light"/></feMerge>
+    </filter>
     <linearGradient id="ks-band" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#FFFFFF" stop-opacity="0"/>
+      <stop offset="0" stop-color="#EFCB86" stop-opacity="0"/>
       <stop offset=".5" stop-color="#EFCB86" stop-opacity=".9"/>
-      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
+      <stop offset="1" stop-color="#EFCB86" stop-opacity="0"/>
     </linearGradient>
   </defs>
-  <g clip-path="url(#ks-gap)">
-    <rect class="ks-glow" x="170" y="172" width="110" height="290" fill="#FBF4E2"/>
-    <rect class="ks-sweep" x="170" y="260" width="110" height="140" fill="url(#ks-band)"/>
-  </g>
-  <path fill="#9C814A" d="M182 500L184 470L224 452L264 470L266 500Z"/>
-  <g fill="#1F3242" transform="translate(7 2)">
-    <path d="M213 172L142 198L91 500H182L184 470L213 457V260H176V238H213Z"/>
-    <path d="M235 172L306 198L357 500H266L264 470L235 457V260H272V238H235Z"/>
-  </g>
-  <g fill="#385366">
-    <path d="M213 172L142 198L91 500H182L184 470L213 457V260H176V238H213Z"/>
-    <path d="M235 172L306 198L357 500H266L264 470L235 457V260H272V238H235Z"/>
-  </g>
-  <path class="ks-rim" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linejoin="miter" d="M213 172H235V238H272V260H235V457L224 452L213 457V260H176V238H213Z"/>
-  <g class="ks-spark" fill="#F3D58C">
-    <circle cx="224" cy="450" r="2.2"/><circle cx="216" cy="455" r="1.5"/><circle cx="232" cy="454" r="1.7"/>
-    <circle cx="220" cy="446" r="1.3"/><circle cx="229" cy="447" r="1.4"/><circle cx="210" cy="459" r="1.2"/>
-    <circle cx="238" cy="459" r="1.3"/><circle cx="224" cy="441" r="1.1"/>
+  <g clip-path="url(#ks-cross)"><rect class="ks-sweep" x="170" y="260" width="110" height="140" fill="url(#ks-band)"/></g>
+  <use href="#ks-stone" fill="#55595C" transform="translate(7 2)"/>
+  <g clip-path="url(#ks-clip)"><rect x="88" y="165" width="272" height="338" filter="url(#ks-granite)"/></g>
+  <path class="ks-rim" fill="none" stroke="#9C814A" stroke-width="2.5" stroke-linejoin="miter" d="M213 172V252H176V274H213V440H235V274H272V252H235V172"/>
+  <g class="ks-spark" fill="#E2C47E">
+    <circle cx="224" cy="436" r="2.2"/><circle cx="217" cy="430" r="1.5"/><circle cx="231" cy="432" r="1.7"/>
+    <circle cx="220" cy="420" r="1.3"/><circle cx="228" cy="424" r="1.4"/><circle cx="215" cy="438" r="1.2"/>
+    <circle cx="233" cy="439" r="1.3"/><circle cx="224" cy="414" r="1.1"/>
   </g>
 </svg>
   </div>
